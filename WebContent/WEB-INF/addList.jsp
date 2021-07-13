@@ -29,24 +29,26 @@
 					<td colspan="4"><button type="submit">확인</button></td>
 				</tr>		
 			</table>
+			<input type="hidden" name="action" value="add">
 		</form>
 		
 		<%
 			for(int i=0;i<guestbookList.size();i++){
 		%>
 	
-			<table border="1">
-				<tr>
-		<!-- 번호 -->	<td><%=guestbookList.get(i).getNo()%></td>
-		<!-- 이름 --><td><%=guestbookList.get(i).getName()%></td>
-		<!-- 날짜 --><td><%=guestbookList.get(i).getRegDate()%></td>
-		<!-- 삭제 --><td><a href="/guestbook2/gbc?actiob=dform&no=<%=guestbookList.get(i).getNo()%>">삭제</a></td>
-				</tr>
-				<tr>
-		<!-- 내용 --><td colspan="4"><%=guestbookList.get(i).getContent()%></td>
-				<tr>
-			</table>
-			<br>
+				<table border="1">
+					<tr>
+			<!-- 번호 -->	<td><%=guestbookList.get(i).getNo()%></td>
+			<!-- 이름 --><td><%=guestbookList.get(i).getName()%></td>
+			<!-- 날짜 --><td><%=guestbookList.get(i).getRegDate()%></td>
+			<!-- 삭제 --><td><a href="/guestbook2/gbc?action=dform&no=<%=guestbookList.get(i).getNo()%>">삭제</a></td>
+					</tr>
+					<tr>
+			<!-- 내용 --><td colspan="4"><%=guestbookList.get(i).getContent()%></td>
+					<tr>
+				</table>
+				<br>
+			
 		<%
 			}
 		%>
