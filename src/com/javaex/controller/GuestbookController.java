@@ -38,14 +38,11 @@ public class GuestbookController extends HttpServlet {
 			//Data attibute
 			request.setAttribute("gList", guestList);
 			
-			//html(jsp) -> forward
-//			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/addList.jsp");
-//			rd.forward(request, response);
 			WebUtil.forward(request, response, "WEB-INF/addList.jsp");
 			
 		} else if("add".equals(action)) {
 		//add
-			System.out.println("[add]");
+			System.out.println("add");
 			
 			//parameter가져오기
 			String name = request.getParameter("name");
@@ -59,8 +56,6 @@ public class GuestbookController extends HttpServlet {
 			GuestbookDao guestbookDao = new GuestbookDao();
 			guestbookDao.insert(guestbookVo);
 			
-			//redirect
-//			response.sendRedirect("/guestbook2/gbc?action=list");
 			WebUtil.redirect(request, response, "/guestbook2/gbc?action=addList");
 			
 		}else if("delete".equals(action)) {
@@ -68,7 +63,7 @@ public class GuestbookController extends HttpServlet {
 			System.out.println("delete");
 			
 			//parameter 호출
-			int idNum = Integer.parseInt(request.getParameter("id"));
+			int idNum = Integer.parseInt(request.getParameter("no"));
 			String password = request.getParameter("password");
 			
 			//값넣기 
@@ -78,9 +73,7 @@ public class GuestbookController extends HttpServlet {
 			GuestbookDao guestbookDao = new GuestbookDao();
 			guestbookDao.delete(guestbookVo);
 			
-			//redirect
-//			response.sendRedirect("guestbook2/gbc?action=list");
-			WebUtil.redirect(request, response, "guestbook2/gbc?action=addList");
+			WebUtil.redirect(request, response, "/guestbook2/gbc?action=addList");
 			
 		}else if("dform".equals(action)) {
 		//deleteForm
@@ -92,9 +85,7 @@ public class GuestbookController extends HttpServlet {
 			//Data attribute
 			request.setAttribute("no", idNum);
 			
-			//html(jsp)->forward
-//			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/deleteForm.jsp");
-//			rd.forward(request, response);
+		
 			WebUtil.forward(request, response, "WEB-INF/deleteForm.jsp");
 		}
 		
