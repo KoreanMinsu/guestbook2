@@ -15,10 +15,10 @@ public class GuestbookDao {
 //field	
 	private Connection conn=null;
 	private PreparedStatement ps=null;
-	ResultSet rs=null;
+	private ResultSet rs=null;
 	
 	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc.oracle:thin@localhost:1521:xe";
+	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	private String id = "webdb";
 	private String pw = "webdb";
 
@@ -127,6 +127,7 @@ public class GuestbookDao {
 			query += "        content, ";
 			query += "        reg_date ";
 			query += " from guestbook ";
+			query += " order by no ASC ";
 			
 			rs=ps.executeQuery();
 			while(rs.next()) {
